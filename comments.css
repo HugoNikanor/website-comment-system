@@ -1,0 +1,20 @@
+#comment-container {
+	border: 2px solid blue;
+}
+.comment {
+	margin-left: 2em;
+	margin: 1em;
+	padding: 0.5em;
+	border: 2px solid black;
+}
+.author {
+	float: left;
+}
+.date {
+	float: right;
+	color: Grey;
+}
+.comment-body {
+	clear: both;
+	padding-left: 1em;
+}
