@@ -7,6 +7,7 @@ function displayComments( $entry ) {
 
 ?>
 <div id="comment-submit">
+<link rel="stylesheet" href="./comments.css">
 <form id="comment-form" method="post" action="submit-comment.php">
 	Comment:<br>
 	<textarea 
@@ -30,7 +31,7 @@ function displayComments( $entry ) {
 
 	<input type="hidden" value="<?php echo $entry; ?>" name="filename">
 </form>
-</div>
+</div> <!-- comment-sumbit -->
 <div id="comment-container">
 <?php
 	foreach( $data as $value ) {
