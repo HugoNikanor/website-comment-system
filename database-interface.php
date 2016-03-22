@@ -46,7 +46,7 @@ function getData( $post ) {
 	$sql = "SELECT * FROM comments where entry like '".$post."'";
 	$result = $conn->query($sql);
 
-	$returnList;
+	$returnList = [];
 
 	if ($result->num_rows > 0) {
 			// output data of each row
@@ -55,7 +55,7 @@ function getData( $post ) {
 					//echo $row["author"] ."<br>". $row["time"] ."<br>". $row["comment"];
 			}
 	} else {
-			echo "0 results";
+			//echo "0 results";
 	}
 	$conn->close();
 	return $returnList;
