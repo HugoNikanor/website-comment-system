@@ -4,7 +4,7 @@
  * $author who is the auhtor of the comment | max 100 characters
  * $comment the body of the comment | max 1000 characters
  */
-function postComment( $filename, $author, $comment ) {
+function postCommentToDatabase( $filename, $author, $comment ) {
 	$servername = "localhost";
 	$username = "comment-dev";
 	$password = "password";
@@ -15,12 +15,15 @@ function postComment( $filename, $author, $comment ) {
 		die("Connection failed: " . $conn->connect_error);
 	}
 
+	$filename = $conn->real_escape_string($filename);
+	$author   = $conn->real_escape_string($author);
+	$comment  = $conn->real_escape_string($comment);
 	$sql = "insert into comments (entry, author, comment) values ('".$filename."', '".$author."',  '".$comment."')";
 
 	if( $conn->query($sql) === TRUE ) {
-		echo "added to database";
+		//echo "added to database";
 	} else {
-		echo "error: ".$sql."<br>".$conn->error;
+		//echo "error: ".$sql."<br>".$conn->error;
 	}
 
 	$conn->close();

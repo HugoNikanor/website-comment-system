@@ -1,3 +1,16 @@
+#comment-submit {
+	margin: 2em;
+}
+#comment-submit textarea {
+	min-width: 100%;
+}
+#comment-submit .author  {
+	float: left;
+	min-width: 70%;
+}
+#comment-submit .submit {
+	width: 100%;
+}
 #comment-container {
 	border: 2px solid blue;
 }

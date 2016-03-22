@@ -6,6 +6,29 @@ function displayComments( $entry ) {
 	$data = getData( $entry );
 
 ?>
+<div id="comment-submit">
+<form id="comment-form">
+	Comment:<br>
+	<textarea 
+		rows=7 
+		required 
+		name="comment" 
+		form="comment-form" 
+		maxlength=1000 
+		placeholder="Write your comment..."
+	></textarea><br>
+
+	Author:<br>
+	<input 
+		required 
+		class="author" 
+		type="text" 
+		name="author"
+		placeholder="Author"
+	>
+	<input class="submit" type="submit" value="Post Comment">
+</form>
+</div>
 <div id="comment-container">
 <?php
 

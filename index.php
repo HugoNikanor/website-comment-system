@@ -13,10 +13,15 @@
 
 
 	require("./comments-display.php");
+	require("./comments.php");
 
-	//storeComment( "20160322TestFile.md", "Some rad dude", "This is a test comment" );
+	//$filename = "20160322TestFile.md";
+	$filename = "Anotherfilename";
 
-	displayComments( "20160322TestFile.md" );
+	//postComment( $filename, "Some rad dude", "This is a test comment" );
+	//postComment( $filename, "Some commenter", "Atleast better than the YouTube comments..." );
+
+	displayComments( $filename );
 	//displayComments( "20160322TestEntry.md" );
 
 
