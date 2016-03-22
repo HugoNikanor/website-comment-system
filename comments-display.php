@@ -7,7 +7,7 @@ function displayComments( $entry ) {
 
 ?>
 <div id="comment-submit">
-<form id="comment-form">
+<form id="comment-form" method="post" action="submit-comment.php">
 	Comment:<br>
 	<textarea 
 		rows=7 
@@ -27,11 +27,12 @@ function displayComments( $entry ) {
 		placeholder="Author"
 	>
 	<input class="submit" type="submit" value="Post Comment">
+
+	<input type="hidden" value="<?php echo $entry; ?>" name="filename">
 </form>
 </div>
 <div id="comment-container">
 <?php
-
 	foreach( $data as $value ) {
 	if( true ): ?>
 <div class="comment">
