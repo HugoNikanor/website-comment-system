@@ -20,6 +20,7 @@ function displayComments( $entry ) {
 
 ?>
 <div id="comment-submit">
+<div class="comment">
 <?php 
 	// This is to allow imports to work, hopefully this makes the whole thing portable
 	$relPath=".".substr(dirname(__FILE__), strrpos(dirname(__FILE__), "/")); 
@@ -32,17 +33,6 @@ function displayComments( $entry ) {
 	method="post" 
 	action=<?php echo $relPath;?>/submit-comment.php
 >
-	Comment:<br>
-	<textarea 
-		rows=7 
-		required 
-		name="comment" 
-		form="comment-form" 
-		maxlength=1000 
-		placeholder="Write your comment..."
-	></textarea><br>
-
-	Author:<br>
 	<input 
 		required 
 		class="author" 
@@ -50,11 +40,23 @@ function displayComments( $entry ) {
 		name="author"
 		placeholder="Author"
 	>
+
 	<input class="submit" type="submit" value="Post Comment">
+
+	<textarea 
+		rows=3 
+		required 
+		name="comment" 
+		form="comment-form" 
+		maxlength=1000 
+		placeholder="Write your comment..."
+	></textarea><br>
+
 
 	<input type="hidden" value="<?php echo $entry; ?>" name="filename">
 	<input type="hidden" value="<?php echo $returnAdr; ?>" name="returnAdr">
 </form>
+</div> <!-- comment (submit) -->
 </div> <!-- comment-sumbit -->
 <div id="comment-container">
 <?php 

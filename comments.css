@@ -1,24 +1,32 @@
 #comment-submit {
-	margin: 2em;
+	font-fimaly: arial;
 }
 #comment-submit textarea {
 	min-width: 100%;
+	background-color: inherit;
+	font-family: arial;
+	margin-top: 0.5em;
+}
+#comment-submit .submit {
+	float: right;
 }
 #comment-submit .author  {
 	float: left;
-	min-width: 70%;
-}
-#comment-submit .submit {
-	width: 100%;
+	background-color: inherit;
+	font-family: arial;
 }
 #comment-container {
-	border: 2px solid blue;
+	font-family: arial;
+	word-spacing: inherit;
 }
 .comment {
 	margin-left: 2em;
 	margin: 1em;
 	padding: 0.5em;
-	border: 2px solid black;
+	border: 1px solid grey;
+	background-color: #F0F0F0;
+	font-family: arial;
+	word-spacing: inherit;
 }
 .author {
 	float: left;
