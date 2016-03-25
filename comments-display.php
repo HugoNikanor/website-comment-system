@@ -20,11 +20,15 @@ function displayComments( $entry ) {
 
 ?>
 <div id="comment-submit">
-<link rel="stylesheet" href="<?php echo dirname(__FILE__) . "/comments.css"; ?>">
+<?php 
+	// This is to allow imports to work, hopefully this makes the whole thing portable
+	$relPath=".".substr(dirname(__FILE__), strrpos(dirname(__FILE__), "/")); 
+?>
+<link rel="stylesheet" href="<?php echo $relPath;?>/comments.css">
 <form 
 	id="comment-form" 
 	method="post" 
-	action=<?php echo dirname(__FILE__). "/submit-comment.php"; ?>
+	action=<?php echo $relPath;?>/submit-comment.php
 >
 	Comment:<br>
 	<textarea 
