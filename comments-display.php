@@ -21,37 +21,31 @@ function displayComments( $entry ) {
 ?>
 <div id="comment-submit">
 <div class="comment">
-<?php 
+<?php
 	// This is to allow imports to work, hopefully this makes the whole thing portable
-	$relPath=".".substr(dirname(__FILE__), strrpos(dirname(__FILE__), "/")); 
+	$relPath=".".substr(dirname(__FILE__), strrpos(dirname(__FILE__), "/"));
 
 	$returnAdr = $_SERVER["REQUEST_URI"];
 ?>
 <link rel="stylesheet" href="<?php echo $relPath;?>/comments.css">
-<form 
-	id="comment-form" 
-	method="post" 
-	action=<?php echo $relPath;?>/submit-comment.php
->
-	<input 
-		required 
-		class="author" 
-		type="text" 
-		name="author"
-		placeholder="Author"
-	>
+<form id="comment-form"
+					method="post"
+					action=<?php echo $relPath;?>/submit-comment.php >
+	<input required
+	       class="author"
+	       type="text"
+	       name="author"
+	       placeholder="Author" >
 
 	<input class="submit" type="submit" value="Post Comment">
 
-	<textarea 
-		rows=3 
-		required 
-		name="comment" 
-		form="comment-form" 
-		maxlength=1000 
-		placeholder="Write your comment..."
-	></textarea><br>
-
+	<textarea rows=3
+	          required
+	          name="comment"
+	          form="comment-form"
+	          maxlength=1000
+	          placeholder="Write your comment..." ></textarea>
+	<br>
 
 	<input type="hidden" value="<?php echo $entry; ?>" name="filename">
 	<input type="hidden" value="<?php echo $returnAdr; ?>" name="returnAdr">
@@ -59,15 +53,16 @@ function displayComments( $entry ) {
 </div> <!-- comment (submit) -->
 </div> <!-- comment-sumbit -->
 <div id="comment-container">
-<?php 
+<?php
 	if( empty($data) ) {
 		displaySingleComment(
 			"System", "",  "There are no comments yet, Be the first to comment!");
 	}
 	foreach( $data as $value ) {
-		displaySingleComment( 
+		displaySingleComment(
 			$value["author"], $value["time"], $value["comment"] );
 	}
 echo "</div> <!-- comment-container -->";
 } ?>
+
 
