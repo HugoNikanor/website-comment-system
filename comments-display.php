@@ -23,6 +23,8 @@ function displayComments( $entry ) {
 <?php 
 	// This is to allow imports to work, hopefully this makes the whole thing portable
 	$relPath=".".substr(dirname(__FILE__), strrpos(dirname(__FILE__), "/")); 
+
+	$returnAdr = $_SERVER["REQUEST_URI"];
 ?>
 <link rel="stylesheet" href="<?php echo $relPath;?>/comments.css">
 <form 
@@ -51,6 +53,7 @@ function displayComments( $entry ) {
 	<input class="submit" type="submit" value="Post Comment">
 
 	<input type="hidden" value="<?php echo $entry; ?>" name="filename">
+	<input type="hidden" value="<?php echo $returnAdr; ?>" name="returnAdr">
 </form>
 </div> <!-- comment-sumbit -->
 <div id="comment-container">
