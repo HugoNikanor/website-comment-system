@@ -49,7 +49,7 @@ function getData( $post ) {
 			die("Connection failed: " . $conn->connect_error);
 	} 
 
-	$sql = "SELECT * FROM comments where entry like '".$post."'";
+	$sql = "SELECT * FROM comments where entry like '".$post."' ORDER BY time DESC";
 	$result = $conn->query($sql);
 
 	$returnList = [];
