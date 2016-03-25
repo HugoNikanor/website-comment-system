@@ -20,7 +20,7 @@ function displayComments( $entry ) {
 
 ?>
 <div id="comment-submit">
-<link rel="stylesheet" href="./comments.css">
+<link rel="stylesheet" href="<?php echo dirname(__FILE__) . "/comments.css"; ?>">
 <form 
 	id="comment-form" 
 	method="post" 
