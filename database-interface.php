@@ -5,10 +5,13 @@
  * $comment the body of the comment | max 1000 characters
  */
 function postCommentToDatabase( $filename, $author, $comment ) {
-	$servername = "localhost";
-	$username = "comment-dev";
-	$password = "password";
-	$dbname = "commentsDev";
+	$fullPath = dirname(__FILE__)."/database.ini";
+	$values = parse_ini_file( $fullPath );
+
+	$servername = $values["servername"];
+	$username   = $values["username"];
+	$password   = $values["password"];
+	$dbname     = $values["dbname"];
 
 	$conn = new mysqli($servername, $username, $password, $dbname);
 	if( $conn->connect_error ) {
@@ -31,10 +34,13 @@ function postCommentToDatabase( $filename, $author, $comment ) {
 
 // select * from comments where entry like $post // sort by date
 function getData( $post ) {
-	$servername = "localhost";
-	$username = "comment-dev";
-	$password = "password";
-	$dbname = "commentsDev";
+	$fullPath = dirname(__FILE__)."/database.ini";
+	$values = parse_ini_file( $fullPath );
+
+	$servername = $values["servername"];
+	$username   = $values["username"];
+	$password   = $values["password"];
+	$dbname     = $values["dbname"];
 
 	// Create connection
 	$conn = new mysqli($servername, $username, $password, $dbname);
