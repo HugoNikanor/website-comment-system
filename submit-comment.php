@@ -6,10 +6,15 @@
 
 	require("./database-interface.php");
 
-	if( !preg_match( "/^\s*$/", $comment ) ) {
+	// check if the author and comment is not just whitespace
+	if( preg_match( "/^\s*$/", $author  ) ||
+	    preg_match( "/^\s*$/", $comment )
+	) {
+		echo "comment posting failed";
+	} else {
 		postCommentToDatabase( $filename, $author, $comment );
+		header("Location: ".$returnAdr);
 	}
-
-	header("Location: ".$returnAdr);
 	die();
+
 ?>
