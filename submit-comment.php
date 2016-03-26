@@ -6,7 +6,9 @@
 
 	require("./database-interface.php");
 
-	postCommentToDatabase( $filename, $author, $comment );
+	if( !preg_match( "/^\s*$/", $comment ) ) {
+		postCommentToDatabase( $filename, $author, $comment );
+	}
 
 	header("Location: ".$returnAdr);
 	die();
