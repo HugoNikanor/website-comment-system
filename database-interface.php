@@ -18,9 +18,15 @@ function postCommentToDatabase( $filename, $author, $comment ) {
 		die("Connection failed: " . $conn->connect_error);
 	}
 
+	if ((include_once "parsedown/Parsedown.php") == TRUE) {
+		$pd = new Parsedown();
+		$comment = $pd->text($comment);
+	}
+
 	$filename = $conn->real_escape_string($filename);
 	$author   = $conn->real_escape_string($author);
 	$comment  = $conn->real_escape_string($comment);
+
 	$sql = "insert into comments (entry, author, comment) values ('".$filename."', '".$author."',  '".$comment."')";
 
 	if( $conn->query($sql) === TRUE ) {
