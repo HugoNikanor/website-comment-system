@@ -35,6 +35,7 @@ function displayComments( $entry ) {
 	       class="author"
 	       type="text"
 	       name="author"
+	       maxlength=40
 	       placeholder="Author" >
 
 	<input class="submit" type="submit" value="Post Comment">
@@ -43,7 +44,7 @@ function displayComments( $entry ) {
 	          required
 	          name="comment"
 	          form="comment-form"
-	          maxlength=1000
+	          maxlength=1500
 	          placeholder="Write your comment..." ></textarea>
 	<br>
 

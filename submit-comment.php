@@ -7,8 +7,11 @@
 	require("./database-interface.php");
 
 	// check if the author and comment is not just whitespace
+	// also checks that none of the fields are to large
 	if( preg_match( "/^\s*$/", $author  ) ||
-	    preg_match( "/^\s*$/", $comment )
+	    preg_match( "/^\s*$/", $comment ) ||
+	    strlen( $author ) > 40            ||
+	    strlen( $comment ) > 1500
 	) {
 		echo file_get_contents("./posting-failed.html");
 
