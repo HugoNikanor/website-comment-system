@@ -7,8 +7,13 @@
 </head>
 <body>
 	<h1>Comment submit failed</h1>
-	<p>Submitting of your comment to the server failed due to the comment being
-	invalid. This is probably due to you not entering an author or an actual comment,
-	or that filled one of the fields with only whitespace.</p>
+	<p>The comment couldn't be submitted to the server. It's probably due to one 
+	of the following reasons:<p>
+	<list>
+		<li>Comment body was empty, or only contained whitespace</li>
+		<li>Comment had no author, or author was just whitespace</li>
+		<li>Comment to long (max 1500 char)</li>
+		<li>Author to long (max 40 char)</li>
+	</list>
 </body>
 </html>
