@@ -12,6 +12,7 @@ function postCommentToDatabase( $filename, $author, $comment ) {
 	$username   = $values["username"];
 	$password   = $values["password"];
 	$dbname     = $values["dbname"];
+	$table      = $values["table"];
 
 	$conn = new mysqli($servername, $username, $password, $dbname);
 	if( $conn->connect_error ) {
@@ -27,7 +28,7 @@ function postCommentToDatabase( $filename, $author, $comment ) {
 	$author   = $conn->real_escape_string($author);
 	$comment  = $conn->real_escape_string($comment);
 
-	$sql = "insert into comments (entry, author, comment) values ('".$filename."', '".$author."',  '".$comment."')";
+	$sql = "insert into ".$table." (entry, author, comment) values ('".$filename."', '".$author."',  '".$comment."')";
 
 	if( $conn->query($sql) === TRUE ) {
 		//echo "added to database";
@@ -47,7 +48,7 @@ function getData( $post ) {
 	$username   = $values["username"];
 	$password   = $values["password"];
 	$dbname     = $values["dbname"];
-
+	$table      = $values["table"];
 	// Create connection
 	$conn = new mysqli($servername, $username, $password, $dbname);
 	// Check connection
@@ -55,7 +56,7 @@ function getData( $post ) {
 			die("Connection failed: " . $conn->connect_error);
 	} 
 
-	$sql = "SELECT * FROM comments where entry like '".$post."' ORDER BY time DESC";
+	$sql = "SELECT * FROM ".$table." where entry like '".$post."' ORDER BY time DESC";
 	$result = $conn->query($sql);
 
 	$returnList = [];
