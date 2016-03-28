@@ -19,17 +19,28 @@
 	font-family: arial;
 	word-spacing: inherit;
 }
+
+/* Targets all comments */
 .comment {
-	margin-left: 2em;
-	margin-right: 0;
-	margin: 1em;
+	margin-top: 1em;
+	margin-left: 0;
 	padding: 0.5em;
 	border: 1px solid grey;
 	background-color: #F0F0F0;
 	font-family: arial;
 	word-spacing: inherit;
 }
+
+/* Targets all child comments */
+.comment .comment {
+	 margin-top: 0.5em;
+	margin-bottom: 0;
+}
+
 .author {
+	float: left;
+}
+.comment-radio-btn {
 	float: left;
 }
 .date {
