@@ -33,8 +33,8 @@ function displayComments( $entry ) { ?>
 ?>
 <link rel="stylesheet" href="<?php echo $relPath;?>/comments.css">
 <form id="comment-form"
-					method="post"
-					action=<?php echo $relPath;?>/submit-comment.php >
+      method="post"
+      action="<?php echo $relPath;?>/submit-comment.php" >
 	<input required
 	       class="author"
 	       type="text"
