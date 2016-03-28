@@ -46,14 +46,14 @@ function displayComments( $entry ) { ?>
 
 	<input class="submit" type="submit" value="Post Comment">
 
+	<input type="radio" name="parent" value="0" checked="checked">
+
 	<textarea rows=3
 	          required
 	          name="comment"
 	          form="comment-form"
 	          maxlength=1500
 	          placeholder="Write your comment..." ></textarea>
-	<br>
-	<input type="radio" name="parent" value="0">
 
 	<input type="hidden" value="<?php echo $entry; ?>" name="filename">
 	<input type="hidden" value="<?php echo $returnAdr; ?>" name="returnAdr">
