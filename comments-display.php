@@ -11,11 +11,13 @@ function displayCommentTree( $entry, $parent ) {
 	foreach( $comments as $comment ) { ?>
 		<div class="comment">
 		<div class="comment-info">
+			<input class="comment-radio-btn" form="comment-form" type="radio" name="parent" value="<?php echo $comment["id"]; ?>">
 			<div class="author"><?php echo $comment["author"]; ?></div>
 			<div class="date"><?php echo $comment["time"]; ?></div>
 		</div>
 		<div class="comment-body"><?php echo $comment["comment"]; ?></div>
 		<?php
+		//echo '<input form="comment-form" type="radio" name="parent" value="'.$comment["id"].'">';
 		displayCommentTree( $entry, $comment["id"] );
 		echo "</div>";
 	}
@@ -51,9 +53,9 @@ function displayComments( $entry ) { ?>
 	          maxlength=1500
 	          placeholder="Write your comment..." ></textarea>
 	<br>
+	<input type="radio" name="parent" value="0">
 
 	<input type="hidden" value="<?php echo $entry; ?>" name="filename">
-	<input type="hidden" name="parent" value="0">
 	<input type="hidden" value="<?php echo $returnAdr; ?>" name="returnAdr">
 </form>
 </div> <!-- comment (submit) -->
