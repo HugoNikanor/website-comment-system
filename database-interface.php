@@ -4,7 +4,7 @@
  * $author who is the auhtor of the comment | max 100 characters
  * $comment the body of the comment | max 1000 characters
  */
-function postCommentToDatabase( $filename, $author, $comment ) {
+function postCommentToDatabase( $filename, $author, $comment, $parent ) {
 	$fullPath = dirname(__FILE__)."/database.ini";
 	$values = parse_ini_file( $fullPath );
 
@@ -27,8 +27,9 @@ function postCommentToDatabase( $filename, $author, $comment ) {
 	$filename = $conn->real_escape_string($filename);
 	$author   = $conn->real_escape_string($author);
 	$comment  = $conn->real_escape_string($comment);
+	$parent   = $conn->real_escape_string($parent);
 
-	$sql = "insert into ".$table." (entry, author, comment) values ('".$filename."', '".$author."',  '".$comment."')";
+	$sql = "insert into ".$table." (entry, author, comment, parent) values ('".$filename."', '".$author."',  '".$comment."',  '".$parent."');";
 
 	if( $conn->query($sql) === TRUE ) {
 		//echo "added to database";

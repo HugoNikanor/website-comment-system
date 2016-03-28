@@ -53,6 +53,7 @@ function displayComments( $entry ) { ?>
 	<br>
 
 	<input type="hidden" value="<?php echo $entry; ?>" name="filename">
+	<input type="hidden" name="parent" value="0">
 	<input type="hidden" value="<?php echo $returnAdr; ?>" name="returnAdr">
 </form>
 </div> <!-- comment (submit) -->
