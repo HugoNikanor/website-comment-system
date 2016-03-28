@@ -5,6 +5,7 @@ CREATE TABLE comments
 	author   varchar(40)    NOT  NULL,
 	time     timestamp      NOT  NULL DEFAULT CURRENT_TIMESTAMP,
 	comment  varchar(2047)  NOT  NULL,
+	parent   int(10)        NOT  NULL, DEFAULT 0,
 
 	PRIMARY KEY (id)
 );
