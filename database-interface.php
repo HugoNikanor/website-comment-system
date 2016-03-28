@@ -40,6 +40,7 @@ function postCommentToDatabase( $filename, $author, $comment ) {
 }
 
 // select * from comments where entry like $post // sort by date
+/*
 function getData( $post ) {
 	$fullPath = dirname(__FILE__)."/database.ini";
 	$values = parse_ini_file( $fullPath );
@@ -73,4 +74,38 @@ function getData( $post ) {
 	$conn->close();
 	return $returnList;
 }
+ */
+
+function databaseQuerry( $query ) {
+	$fullPath = dirname(__FILE__)."/database.ini";
+	$values = parse_ini_file( $fullPath );
+
+	$servername = $values["servername"];
+	$username   = $values["username"];
+	$password   = $values["password"];
+	$dbname     = $values["dbname"];
+	$table      = $values["table"];
+
+	$query = sprintf( $query, $table );
+
+	$conn = new mysqli($servername, $username, $password, $dbname);
+
+	if($conn->connect_error) {
+		die("Connect error");
+	}
+
+	$result = $conn->query($query);
+
+	$returnList = [];
+	if($result->num_rows > 0) {
+		while($row = $result->fetch_assoc()) {
+			$returnList[] = $row;
+		}
+	}
+
+	$conn->close();
+	return $returnList;
+
+}
+
 ?>

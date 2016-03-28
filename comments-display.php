@@ -1,24 +1,28 @@
 <?php
 require_once(dirname(__FILE__) . "/database-interface.php");
 
-function displaySingleComment( $author, $time, $comment ) {
-	if( true ): ?>
-<div class="comment">
-<div class="comment-info">
-	<div class="author"><?php echo $author; ?></div>
-	<div class="date"><?php echo $time; ?></div>
-</div>
-<div class="comment-body"><?php echo $comment; ?></div>
-</div>
-<?php
-		endif;
-}	
+function displayCommentTree( $entry, $parent ) {
+	
+	$comments = databaseQuerry(
+		"SELECT id, author, time, comment FROM %s
+		WHERE parent = ".$parent." AND entry like '".$entry."'
+		ORDER BY time DESC;");
 
-function displayComments( $entry ) {
+	foreach( $comments as $comment ) { ?>
+		<div class="comment">
+		<div class="comment-info">
+			<div class="author"><?php echo $comment["author"]; ?></div>
+			<div class="date"><?php echo $comment["time"]; ?></div>
+		</div>
+		<div class="comment-body"><?php echo $comment["comment"]; ?></div>
+		<?php
+		displayCommentTree( $entry, $comment["id"] );
+		echo "</div>";
+	}
 
-	$data = getData( $entry );
+}
 
-?>
+function displayComments( $entry ) { ?>
 <div id="comment-submit">
 <div class="comment">
 <?php
@@ -53,17 +57,10 @@ function displayComments( $entry ) {
 </form>
 </div> <!-- comment (submit) -->
 </div> <!-- comment-sumbit -->
-<div id="comment-container">
 <?php
-	if( empty($data) ) {
-		displaySingleComment(
-			"System", "",  "There are no comments yet, Be the first to comment!");
-	}
-	foreach( $data as $value ) {
-		displaySingleComment(
-			$value["author"], $value["time"], $value["comment"] );
-	}
-echo "</div> <!-- comment-container -->";
+	echo "<div id=comment-container>";
+	displayCommentTree($entry, 0);
+	echo "</div> <!-- comment-container -->";
 } ?>
 
 
