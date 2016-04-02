@@ -2,6 +2,7 @@
 	$filename  = htmlspecialchars( $_POST["filename"] );
 	$author    = htmlspecialchars( $_POST["author"]   );
 	$comment   = htmlspecialchars( $_POST["comment"]  );
+	$parent    = htmlspecialchars( $_POST["parent"]   );
 	$returnAdr = $_POST["returnAdr"];
 
 	require("./database-interface.php");
@@ -19,7 +20,7 @@
 		echo "Return to previous <a href=".$returnAdr.">page</a>";
 		die();
 	} else {
-		postCommentToDatabase( $filename, $author, $comment );
+		postCommentToDatabase( $filename, $author, $comment, $parent );
 	}
 	header("Location: ".$returnAdr);
 	die();
