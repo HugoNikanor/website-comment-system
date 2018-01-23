@@ -42,9 +42,10 @@ function displayComments( $entry ) { ?>
 	       type="text"
 	       name="author"
 	       maxlength=40
-	       placeholder="Author" >
+	       placeholder="Author"
+	       tabindex="101" >
 
-	<input class="submit" type="submit" value="Post Comment">
+	<input class="submit" type="submit" value="Post Comment" tabindex="103">
 
 	<input type="radio" name="parent" value="0" checked="checked">
 
@@ -53,7 +54,8 @@ function displayComments( $entry ) { ?>
 	          name="comment"
 	          form="comment-form"
 	          maxlength=1500
-	          placeholder="Write your comment..." ></textarea>
+	          placeholder="Write your comment..."
+	          tabindex="102"></textarea>
 
 	<input type="hidden" value="<?php echo $entry; ?>" name="filename">
 	<input type="hidden" value="<?php echo $returnAdr; ?>" name="returnAdr">
