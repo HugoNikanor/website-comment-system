@@ -11,6 +11,7 @@
 	// also checks that none of the fields are to large
 	if( preg_match( "/^\s*$/", $author  ) ||
 	    preg_match( "/^\s*$/", $comment ) ||
+		preg_match( "order|buy|online|cost|cheap|price", $author ) ||
 	    strlen( $author ) > 40            ||
 	    strlen( $comment ) > 1500         ||
 	    strpos( $comment, "&lt;a href=" ) !== false
