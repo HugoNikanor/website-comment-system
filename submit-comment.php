@@ -12,7 +12,8 @@
 	if( preg_match( "/^\s*$/", $author  ) ||
 	    preg_match( "/^\s*$/", $comment ) ||
 	    strlen( $author ) > 40            ||
-	    strlen( $comment ) > 1500
+	    strlen( $comment ) > 1500         ||
+	    strpos( $comment, "&lt;a href=" ) !== false
 	) {
 		echo file_get_contents("./posting-failed.html");
 
